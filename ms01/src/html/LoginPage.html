@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Login page</h1>
+    <div>
+      <div>
+        <label>UserName:</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="enter your username here..."
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input id="password" type="password" />
+      </div>
+      <button onclick="login()">Sign In</button>
+    </div>
+  </body>
+  <script>
+    function login() {
+      console.log($("#username").val());
+      console.log($("#password").val());
+      $.ajax({
+        type: "POST",
+        url:"http://localhost:5000/login",
+        // async: false,
+        data: {
+          username: $("#username").val(),
+          password: $("#password").val()
+        },
+        success: result => {
+          console.log(result);
+        }
+      });
+    }
+  </script>
+</html>
